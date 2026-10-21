@@ -23,6 +23,8 @@
   --band: #5a3c2a;
   --band-ink: #f8efe5;
   --soft: #f1e6d9;
+  --danger: #b3261e;
+  --ok: #2e7d32;
   --f-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --f-body: "Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -31,13 +33,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #1d1612; --surface: #261d17; --ink: #f2e8dd; --muted: #bfaa96; --line: #3b2e25;
-    --signal: #d79a62; --signal-ink: #1d1612; --band: #140f0c; --band-ink: #f2e8dd; --soft: #2e231c;
+    --signal: #d79a62; --signal-ink: #1d1612; --band: #140f0c; --band-ink: #f2e8dd; --soft: #2e231c; --danger: #ff8a7a; --ok: #8fd694;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #1d1612; --surface: #261d17; --ink: #f2e8dd; --muted: #bfaa96; --line: #3b2e25;
-  --signal: #d79a62; --signal-ink: #1d1612; --band: #140f0c; --band-ink: #f2e8dd; --soft: #2e231c;
+  --signal: #d79a62; --signal-ink: #1d1612; --band: #140f0c; --band-ink: #f2e8dd; --soft: #2e231c; --danger: #ff8a7a; --ok: #8fd694;
   color-scheme: dark;
 }
 
@@ -188,7 +190,7 @@ body.editing .ed-only { display: inline-flex; }
 .ed-auth label { display: grid; gap: .25rem; font-weight: 600; font-size: .92rem; }
 .ed-auth input { font: 400 1rem var(--f-body); padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); }
 .ed-auth input:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; }
-.ed-err { color: #b3261e; font-size: .88rem; font-weight: 600; margin: 0; min-height: 1.1em; }
+.ed-err { color: var(--danger); font-size: .88rem; font-weight: 600; margin: 0; min-height: 1.1em; }
 
 /* Formularz */
 .contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
@@ -201,7 +203,7 @@ body.editing .ed-only { display: inline-flex; }
 .qform input, .qform select, .qform textarea { font: 400 1rem var(--f-body); padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); width: 100%; }
 .qform textarea { resize: vertical; min-height: 7rem; }
 .qform input:focus-visible, .qform select:focus-visible, .qform textarea:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; border-color: var(--signal); }
-.qform [aria-invalid="true"] { border-color: #b3261e; }
+.qform [aria-invalid="true"] { border-color: var(--danger); }
 .qconsent { display: flex !important; grid-template-columns: none; align-items: flex-start; gap: .6rem !important; font-weight: 400 !important; font-size: .88rem !important; color: var(--muted); }
 .qconsent input { width: 1.1rem !important; height: 1.1rem; margin-top: .15rem; flex: none; accent-color: var(--signal); }
 .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
@@ -210,8 +212,8 @@ body.editing .ed-only { display: inline-flex; }
 .qsend:disabled { opacity: .6; cursor: wait; }
 .qsend:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
 .qmsg { margin: 0; font-weight: 600; font-size: .95rem; min-height: 1.2em; }
-.qmsg.ok { color: #2e7d32; }
-.qmsg.err { color: #b3261e; }
+.qmsg.ok { color: var(--ok); }
+.qmsg.err { color: var(--danger); }
 @media (max-width: 860px) { .contact-layout { grid-template-columns: minmax(0, 1fr); } }
 .ed-auth input, .ed-field input { width: 100%; }
 .ed-field { display: grid; gap: .3rem; font-size: .9rem; font-weight: 600; }
@@ -760,11 +762,13 @@ body.editing .ed-only { display: inline-flex; }
         if (!r.ok || j.success === false || j.success === 'false') throw new Error(j.message || r.status);
         show('Dziękujemy! Wiadomość została wysłana. Odpowiemy wkrótce.', 'ok'); form.reset();
       }); })
-      .catch(function () { show('Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń: +48 667 760 706.', 'err'); })
+      .catch(function (err) {
+        if (/activat/i.test(String(err && err.message))) show('Formularz czeka na aktywację. Właściciel: kliknij link „Activate Form” w mailu od FormSubmit na skrzynce safety.piotrszojda@gmail.com.', 'err');
+        else show('Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń: +48 667 760 706.', 'err');
+      })
       .then(function () { btn.disabled = false; btn.textContent = 'Wyślij zapytanie'; });
   });
 })();
 </script>
 </body>
 </html>
-
