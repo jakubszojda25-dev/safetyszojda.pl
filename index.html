@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAFETY – Piotr Szojda</title>
+<meta name="admin-key" content="">
+<meta name="form-endpoint" content="">
+<meta name="description" content="SAFETY – Piotr Szojda, Mikołów. Doradztwo BHP i ochrony przeciwpożarowej, szkolenia, świadectwa charakterystyki energetycznej, sprzęt ochronny i ratowniczy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Układ: wąska kolumna informacyjna w ciepłych brązach, spójna z logo (dłoń podająca dłoń). */
+:root {
+  --bg: #faf6f1;
+  --surface: #ffffff;
+  --ink: #3b2a1e;
+  --muted: #7a6453;
+  --line: #e9ddd0;
+  --signal: #9a6233;
+  --signal-ink: #ffffff;
+  --band: #5a3c2a;
+  --band-ink: #f8efe5;
+  --soft: #f1e6d9;
+  --f-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1d1612; --surface: #261d17; --ink: #f2e8dd; --muted: #bfaa96; --line: #3b2e25;
+    --signal: #d79a62; --signal-ink: #1d1612; --band: #140f0c; --band-ink: #f2e8dd; --soft: #2e231c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1d1612; --surface: #261d17; --ink: #f2e8dd; --muted: #bfaa96; --line: #3b2e25;
+  --signal: #d79a62; --signal-ink: #1d1612; --band: #140f0c; --band-ink: #f2e8dd; --soft: #2e231c;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--f-body);
+}
+.wrap {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.5rem); letter-spacing: .01em; }
+h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: .01em; }
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+.label {
+  font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Nagłówek */
+.top { background: var(--band); color: var(--band-ink); position: sticky; top: 0; z-index: 5; }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; padding-block: .75rem; }
+.brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+.mark {
+  width: 2.6rem; height: 2.6rem; flex: none; border-radius: 50%;
+  background: var(--band-ink); color: var(--band); display: grid; place-items: center;
+}
+.mark svg { width: 1.9rem; height: 1.9rem; }
+.brand b { font: 700 1.45rem/1 var(--f-display); letter-spacing: .06em; }
+.brand span { font-size: .9rem; opacity: .8; }
+.top nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; font-size: .95rem; }
+.top nav a { text-decoration: none; opacity: .85; padding-block: .25rem; }
+.top nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+/* Wstęp */
+.hero { background: var(--soft); padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(2rem, 5vw, 3rem); border-bottom: 1px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2.5rem; align-items: end; }
+.hero h1 { font-size: clamp(2rem, 8.5vw, 3.6rem); letter-spacing: .01em; }
+.hero h1 em { font-style: normal; color: var(--signal); }
+.hero .lead { margin-top: 1.1rem; max-width: 38rem; font-size: 1.2rem; color: var(--muted); }
+.facts { list-style: none; margin: 0; display: grid; gap: .1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: .5rem 1.25rem; }
+.facts li { display: flex; justify-content: space-between; gap: 1rem; padding-block: .45rem; border-bottom: 1px dashed var(--line); }
+.facts li:last-child { border-bottom: 0; }
+.facts span:last-child { font-family: var(--f-mono); font-size: .92rem; text-align: right; font-variant-numeric: tabular-nums; }
+
+section.block { padding-block: clamp(2.5rem, 6vw, 4rem); }
+section.block + section.block { border-top: 1px solid var(--line); }
+.head { display: grid; gap: .5rem; margin-bottom: 2rem; max-width: 44rem; }
+.head p { color: var(--muted); }
+
+/* Usługi */
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem; display: grid; gap: .6rem; align-content: start; min-width: 0; }
+.svc .code { font-family: var(--f-mono); font-size: .8rem; color: var(--signal); letter-spacing: .06em; }
+.svc p { color: var(--muted); font-size: 1rem; }
+
+/* Sprzęt */
+.gear { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2rem; }
+.gear h3 { margin-bottom: .6rem; padding-bottom: .4rem; border-bottom: 2px solid var(--signal); }
+.gear ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; }
+.gear li::marker { color: var(--signal); }
+
+/* Właściciel */
+.owner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(2rem, 5vw, 3.5rem); }
+.owner .bio { display: grid; gap: 1rem; align-content: start; }
+.owner .rank { font-family: var(--f-mono); font-size: .9rem; color: var(--signal); }
+.owner .bio p { max-width: 36rem; }
+.stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: .5rem; }
+.stats div { display: grid; }
+.stats b { font: 700 2.6rem/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stats span { font-size: .9rem; color: var(--muted); }
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); display: grid; gap: 1.25rem; }
+.timeline li { position: relative; padding-left: 1.4rem; display: grid; gap: .15rem; }
+.timeline li::before {
+  content: ""; position: absolute; left: -7px; top: .45rem; width: 12px; height: 12px;
+  background: var(--bg); border: 2px solid var(--muted); border-radius: 50%;
+}
+.timeline li.now::before { background: var(--signal); border-color: var(--signal); }
+.timeline time { font-family: var(--f-mono); font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline strong { font-weight: 600; }
+
+/* Kontakt */
+.contact { background: var(--band); color: var(--band-ink); }
+.contact .head p { color: inherit; opacity: .8; }
+.contact .label { color: inherit; opacity: .7; }
+.cgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2rem; }
+.cgrid > div { display: grid; gap: .35rem; align-content: start; min-width: 0; }
+.cgrid .val { font-size: 1.2rem; font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.cgrid a.val { text-decoration-color: var(--signal); text-underline-offset: 4px; }
+dl.reg { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; font-size: .95rem; }
+dl.reg dt { opacity: .7; }
+dl.reg dd { margin: 0; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+footer { padding-block: 1.5rem; font-size: .88rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; }
+
+@media (max-width: 760px) {
+  .hero .wrap, .owner { grid-template-columns: minmax(0, 1fr); }
+  .top nav { font-size: .9rem; }
+}
+
+/* Panel właściciela (widoczny tylko pod adresem #edycja) */
+.mark img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+#owner-editor { position: fixed; z-index: 50; right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); font: 400 .95rem/1.4 var(--f-body); color: var(--ink); }
+#owner-editor[hidden] { display: none !important; }
+.ed-fab { display: flex; align-items: center; gap: .5rem; border: 0; border-radius: 999px; padding: .75rem 1.1rem; background: var(--band); color: var(--band-ink); font: 600 1rem var(--f-body); cursor: pointer; box-shadow: 0 6px 20px rgba(40,25,15,.3); margin-left: auto; }
+.ed-panel { width: min(22rem, calc(100vw - 24px)); max-height: min(78vh, 44rem); overflow: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 12px 40px rgba(40,25,15,.28); margin-bottom: .6rem; }
+.ed-panel header { display: flex; justify-content: space-between; align-items: center; padding: .9rem 1.1rem; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--surface); }
+.ed-panel header b { font: 700 1.25rem/1 var(--f-display); }
+.ed-close { border: 0; background: none; font-size: 1.4rem; line-height: 1; color: var(--muted); cursor: pointer; padding: .2rem .4rem; }
+.ed-group { padding: .9rem 1.1rem; border-bottom: 1px solid var(--line); display: grid; gap: .6rem; }
+.ed-group:last-child { border-bottom: 0; }
+.ed-group h4 { margin: 0; font: 500 .75rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ed-row { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.ed-row input[type="color"] { width: 2.6rem; height: 2rem; border: 1px solid var(--line); border-radius: 8px; background: none; padding: 2px; cursor: pointer; }
+.ed-switch { display: flex; align-items: center; gap: .6rem; cursor: pointer; font-weight: 600; }
+.ed-switch input { width: 1.15rem; height: 1.15rem; accent-color: var(--signal); }
+.ed-checks { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem .75rem; }
+.ed-checks label { display: flex; gap: .45rem; align-items: center; cursor: pointer; }
+.ed-checks input { accent-color: var(--signal); }
+.ed-btns { display: flex; flex-wrap: wrap; gap: .5rem; }
+.ed-btn { border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: .55rem .8rem; font: 600 .92rem var(--f-body); cursor: pointer; }
+.ed-btn.primary { background: var(--signal); border-color: var(--signal); color: var(--signal-ink); }
+.ed-btn:hover { border-color: var(--signal); }
+.ed-btn:focus-visible, .ed-fab:focus-visible, .ed-close:focus-visible { outline: 3px solid var(--signal); outline-offset: 2px; }
+.ed-note { font-size: .85rem; color: var(--muted); margin: 0; }
+.ed-status { font-size: .88rem; font-weight: 600; color: var(--signal); min-height: 1.2em; margin: 0; }
+.ed-file { font-size: .85rem; max-width: 100%; }
+body.editing [contenteditable="true"] { outline: 1px dashed color-mix(in srgb, var(--signal) 55%, transparent); outline-offset: 3px; border-radius: 3px; cursor: text; }
+body.editing [contenteditable="true"]:hover, body.editing [contenteditable="true"]:focus { outline: 2px solid var(--signal); background: color-mix(in srgb, var(--signal) 8%, transparent); }
+.ed-only { display: none; }
+body.editing .ed-only { display: inline-flex; }
+.ed-add { margin-top: 1rem; border: 2px dashed var(--signal); background: transparent; color: var(--signal); border-radius: 12px; padding: .6rem 1rem; font: 600 .95rem var(--f-body); cursor: pointer; }
+.ed-del { position: absolute; top: .5rem; right: .5rem; width: 1.8rem; height: 1.8rem; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: var(--band); color: var(--band-ink); font-size: 1rem; cursor: pointer; z-index: 2; }
+.svc, .timeline li { position: relative; }
+.timeline .ed-del { top: 0; right: 0; }
+.ed-auth form { display: grid; gap: .7rem; padding: 1rem 1.1rem 1.2rem; }
+.ed-auth label { display: grid; gap: .25rem; font-weight: 600; font-size: .92rem; }
+.ed-auth input { font: 400 1rem var(--f-body); padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); }
+.ed-auth input:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; }
+.ed-err { color: #b3261e; font-size: .88rem; font-weight: 600; margin: 0; min-height: 1.1em; }
+
+/* Formularz */
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+.contact-layout .cgrid { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.qform { background: var(--surface); color: var(--ink); border-radius: 16px; padding: clamp(1.25rem, 3vw, 2rem); display: grid; gap: 1rem; min-width: 0; }
+.qform h3 { font-size: 1.6rem; }
+.qrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem; }
+.qform label { display: grid; gap: .3rem; font-weight: 600; font-size: .95rem; min-width: 0; }
+.qform .opt { font-weight: 400; color: var(--muted); }
+.qform input, .qform select, .qform textarea { font: 400 1rem var(--f-body); padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); width: 100%; }
+.qform textarea { resize: vertical; min-height: 7rem; }
+.qform input:focus-visible, .qform select:focus-visible, .qform textarea:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; border-color: var(--signal); }
+.qform [aria-invalid="true"] { border-color: #b3261e; }
+.qconsent { display: flex !important; grid-template-columns: none; align-items: flex-start; gap: .6rem !important; font-weight: 400 !important; font-size: .88rem !important; color: var(--muted); }
+.qconsent input { width: 1.1rem !important; height: 1.1rem; margin-top: .15rem; flex: none; accent-color: var(--signal); }
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.qsend { justify-self: start; border: 0; border-radius: 10px; padding: .8rem 1.4rem; background: var(--signal); color: var(--signal-ink); font: 600 1.05rem var(--f-body); cursor: pointer; }
+.qsend:hover { filter: brightness(1.08); }
+.qsend:disabled { opacity: .6; cursor: wait; }
+.qsend:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+.qmsg { margin: 0; font-weight: 600; font-size: .95rem; min-height: 1.2em; }
+.qmsg.ok { color: #2e7d32; }
+.qmsg.err { color: #b3261e; }
+@media (max-width: 860px) { .contact-layout { grid-template-columns: minmax(0, 1fr); } }
+.ed-auth input, .ed-field input { width: 100%; }
+.ed-field { display: grid; gap: .3rem; font-size: .9rem; font-weight: 600; }
+.ed-field input { font: 400 .92rem var(--f-body); padding: .5rem .6rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+</style>
+<style id="custom-colors"></style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start" aria-label="SAFETY – Piotr Szojda, strona główna">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30l9-9c2-2 5-2 7 0l3 3"/><path d="M44 18l-9 9c-2 2-5 2-7 0l-3-3"/><path d="M20 21l7-6c2-1.5 4.5-1.3 6 .5"/><path d="M28 27l-7 6c-2 1.5-4.5 1.3-6-.5"/><path d="M17 27l3 3M21 23l3 3"/></svg></span>
+      <span><b>SAFETY</b><br><span>Piotr Szojda</span></span>
+    </a>
+    <nav aria-label="Menu">
+      <a href="#uslugi">Usługi</a>
+      <a href="#sprzet">Sprzęt</a>
+      <a href="#wlasciciel">O właścicielu</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label">BHP · Ochrona przeciwpożarowa · Mikołów</p>
+        <h1 style="margin-top:.6rem">Bezpieczeństwo pracy i&nbsp;<em>ochrona ppoż.</em></h1>
+        <p class="lead">SAFETY to firma doradcza z Mikołowa. Stawiamy na partnerską współpracę i życzliwe wsparcie. Pomagamy zakładom pracy, instytucjom i obiektom spełnić wymagania BHP i ochrony przeciwpożarowej: doradzamy, szkolimy, przygotowujemy dokumentację i dostarczamy sprzęt ochronny oraz ratowniczy.</p>
+      </div>
+      <ul class="facts" aria-label="Najważniejsze informacje">
+        <li><span>Działalność od</span><span>1 maja 2023</span></li>
+        <li><span>Siedziba</span><span>Mikołów, śląskie</span></li>
+        <li><span>Właściciel</span><span>Piotr Szojda</span></li>
+        <li><span>Doświadczenie w PSP</span><span>ponad 30 lat</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="uslugi">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Zakres działalności</p>
+        <h2>Usługi</h2>
+        <p>Obsługujemy firmy i instytucje w zakresie bezpieczeństwa pracy, ochrony przeciwpożarowej oraz efektywności energetycznej budynków.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <span class="code">BHP</span>
+          <h3>Doradztwo w zakresie BHP</h3>
+          <p>Wsparcie pracodawców w organizacji bezpiecznych warunków pracy, ocena stanu BHP i przygotowanie wymaganej dokumentacji.</p>
+        </article>
+        <article class="svc">
+          <span class="code">PPOŻ</span>
+          <h3>Ochrona przeciwpożarowa</h3>
+          <p>Doradztwo w zakresie bezpieczeństwa pożarowego obiektów, oparte na wieloletnim doświadczeniu w Państwowej Straży Pożarnej.</p>
+        </article>
+        <article class="svc">
+          <span class="code">ŚCHE</span>
+          <h3>Świadectwa charakterystyki energetycznej</h3>
+          <p>Sporządzanie świadectw charakterystyki energetycznej budynków i lokali, wymaganych m.in. przy sprzedaży i najmie.</p>
+        </article>
+        <article class="svc">
+          <span class="code">SZKOLENIA</span>
+          <h3>Szkolenia specjalistyczne</h3>
+          <p>Prowadzenie specjalistycznych szkoleń z zakresu bezpieczeństwa, ochrony przeciwpożarowej i obsługi sprzętu ochronnego.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sprzet">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Sprzedaż</p>
+        <h2>Sprzęt ochronny i ratowniczy</h2>
+        <p>Dostarczamy specjalistyczny sprzęt dla zakładów pracy, służb ratowniczych i obiektów.</p>
+      </div>
+      <div class="gear">
+        <div>
+          <h3>Ochrona osobista</h3>
+          <ul>
+            <li>Ubrania ochronne jednorazowe</li>
+            <li>Sprzęt ochrony dróg oddechowych</li>
+            <li>Pochłaniacze do masek</li>
+            <li>Rękawice antyprzecięciowe</li>
+            <li>Sprzęt do zabezpieczenia prac na wysokości</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Substancje niebezpieczne</h3>
+          <ul>
+            <li>Detektory substancji niebezpiecznych</li>
+            <li>Składane wanny wychwytowe</li>
+            <li>Taśmy i oznakowanie ostrzegawcze (PCHEM)</li>
+            <li>Pompy</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ratownictwo i ppoż.</h3>
+          <ul>
+            <li>Sprzęt przeciwpożarowy</li>
+            <li>Narzędzia hydrauliczne</li>
+            <li>Urządzenia filtracyjno-napowietrzające do schronów</li>
+            <li>Filtry do urządzeń filtrowentylacyjnych</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="wlasciciel">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">O właścicielu</p>
+        <h2>Piotr Szojda</h2>
+      </div>
+      <div class="owner">
+        <div class="bio">
+          <p class="rank">st. bryg. w st. spocz. mgr inż. Piotr Szojda</p>
+          <p>Założyciel i właściciel firmy SAFETY. Przez ponad 30 lat służył w Państwowej Straży Pożarnej, w tym 26 lat w Komendzie Miejskiej PSP w Tychach. W latach 2017–2023 kierował tą komendą jako Komendant Miejski.</p>
+          <p>Jest absolwentem Szkoły Głównej Służby Pożarniczej w Warszawie. W tyskiej komendzie przeszedł całą ścieżkę zawodową: od dowódcy zastępu i dowódcy jednostki ratowniczo-gaśniczej, przez stanowiska w wydziale operacyjno-szkoleniowym, po funkcję zastępcy komendanta i komendanta.</p>
+          <p>Wiedzę zdobytą przy działaniach ratowniczych, nadzorze nad krajowym systemem ratowniczo-gaśniczym i współpracy z jednostkami OSP wykorzystuje dziś, doradząc firmom i instytucjom w sprawach BHP i ochrony przeciwpożarowej.</p>
+          <div class="stats">
+            <div><b>30+</b><span>lat służby w PSP</span></div>
+            <div><b>26</b><span>lat w KM PSP Tychy</span></div>
+            <div><b>6</b><span>lat jako komendant</span></div>
+          </div>
+        </div>
+        <ol class="timeline" aria-label="Przebieg kariery">
+          <li><time>Początek służby</time><strong>Szkoła Główna Służby Pożarniczej w Warszawie</strong><span>Służbę w PSP rozpoczął jako podchorąży SGSP.</span></li>
+          <li><time>Po studiach</time><strong>Komenda Miejska PSP w Tychach</strong><span>Dowódca zastępu, następnie dowódca jednostki ratowniczo-gaśniczej.</span></li>
+          <li><time>Kolejne lata</time><strong>Wydział operacyjno-szkoleniowy</strong><span>Oficer, starszy specjalista, a następnie naczelnik wydziału.</span></li>
+          <li><time>2012</time><strong>Zastępca Komendanta Miejskiego PSP w Tychach</strong></li>
+          <li><time>16.03.2017</time><strong>Przejęcie obowiązków komendanta</strong><span>Powołany na stanowisko Komendanta Miejskiego PSP w Tychach 12 maja 2017 r.</span></li>
+          <li><time>31.01.2023</time><strong>Przejście na emeryturę</strong><span>Po ponad 30 latach służby w Państwowej Straży Pożarnej.</span></li>
+          <li class="now"><time>01.05.2023</time><strong>Założenie firmy SAFETY – Piotr Szojda</strong><span>Doradztwo BHP i ppoż., szkolenia, sprzęt ochronny.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="kontakt">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Kontakt</p>
+        <h2>Skontaktuj się z nami</h2>
+        <p>Zadzwoń, napisz przez formularz lub skontaktuj się przez profil firmy na Facebooku. Odpowiadamy najszybciej, jak to możliwe.</p>
+      </div>
+      <div class="contact-layout">
+      <div class="cgrid">
+        <div>
+          <span class="label">Telefon</span>
+          <a class="val" href="tel:+48667760706">+48 667 760 706</a>
+        </div>
+        <div>
+          <span class="label">Adres</span>
+          <span class="val">ul. Żwirki i Wigury 65/a<br>43-190 Mikołów</span>
+        </div>
+        <div>
+          <span class="label">Facebook</span>
+          <a class="val" href="https://www.facebook.com/safety.piotrszojda/" target="_blank" rel="noopener">facebook.com/safety.piotrszojda</a>
+        </div>
+        <div>
+          <span class="label">Dane rejestrowe</span>
+          <dl class="reg">
+            <dt>NIP</dt><dd>638 133 53 95</dd>
+            <dt>REGON</dt><dd>524761673</dd>
+            <dt>PKD</dt><dd>74.90.Z</dd>
+            <dt>Forma</dt><dd>JDG (CEIDG)</dd>
+          </dl>
+        </div>
+      </div>
+      <form class="qform" id="qform" novalidate>
+        <h3>Formularz zapytania</h3>
+        <div class="qrow">
+          <label for="q-name">Imię i nazwisko / firma<input type="text" id="q-name" name="name" autocomplete="name" required></label>
+          <label for="q-phone">Telefon<input type="tel" id="q-phone" name="phone" autocomplete="tel" placeholder="opcjonalnie"></label>
+        </div>
+        <label for="q-email">E-mail<input type="email" id="q-email" name="email" autocomplete="email" required></label>
+        <label for="q-topic">Temat
+          <select id="q-topic" name="topic">
+            <option>Doradztwo BHP</option>
+            <option>Ochrona przeciwpożarowa</option>
+            <option>Świadectwo charakterystyki energetycznej</option>
+            <option>Szkolenia</option>
+            <option>Sprzęt ochronny i ratowniczy</option>
+            <option>Inne</option>
+          </select>
+        </label>
+        <label for="q-msg">Wiadomość<textarea id="q-msg" name="message" rows="5" required placeholder="Opisz krótko, czego potrzebujesz: rodzaj obiektu, liczba pracowników, termin."></textarea></label>
+        <input type="text" name="_gotcha" id="q-hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <label class="qconsent" for="q-consent"><input type="checkbox" id="q-consent" name="consent" required> <span>Wyrażam zgodę na przetwarzanie moich danych przez SAFETY – Piotr Szojda w celu odpowiedzi na zapytanie.</span></label>
+        <p class="qmsg" id="q-msg-status" role="status"></p>
+        <button class="qsend" type="submit" id="q-send">Wyślij zapytanie</button>
+      </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 SAFETY – Piotr Szojda, Mikołów</span>
+    <span>Doradztwo BHP · Ppoż. · Szkolenia · Sprzęt ochronny</span>
+  </div>
+</footer>
+
+
+<div id="owner-editor" hidden>
+  <div class="ed-panel ed-auth" id="ed-auth" hidden role="dialog" aria-label="Logowanie administratora">
+    <header><b id="auth-title">Logowanie</b><button class="ed-close" id="auth-close" type="button" aria-label="Zamknij">×</button></header>
+    <form id="auth-form" novalidate>
+      <p class="ed-note" id="auth-intro">Podaj e-mail i hasło administratora strony.</p>
+      <label for="auth-email">E-mail<input type="email" id="auth-email" autocomplete="username" required></label>
+      <label for="auth-pass">Hasło<input type="password" id="auth-pass" autocomplete="current-password" required></label>
+      <label for="auth-pass2" id="auth-pass2-wrap" hidden>Powtórz hasło<input type="password" id="auth-pass2" autocomplete="new-password"></label>
+      <p class="ed-err" id="auth-err" role="alert"></p>
+      <button class="ed-btn primary" type="submit" id="auth-submit">Zaloguj</button>
+    </form>
+  </div>
+  <div class="ed-panel" id="ed-panel" hidden role="dialog" aria-label="Panel edycji strony">
+    <header><b>Panel edycji</b><button class="ed-close" id="ed-close" type="button" aria-label="Zamknij panel">×</button></header>
+    <div class="ed-group">
+      <label class="ed-switch"><input type="checkbox" id="ed-mode"> Edytuj teksty na stronie</label>
+      <p class="ed-note">Kliknij dowolny tekst, aby go zmienić. W listach Enter dodaje nowy punkt.</p>
+    </div>
+    <div class="ed-group">
+      <h4>Kolory</h4>
+      <div class="ed-row"><label for="c-signal">Akcent (przyciski, wyróżnienia)</label><input type="color" id="c-signal" data-var="--signal"></div>
+      <div class="ed-row"><label for="c-band">Nagłówek i kontakt</label><input type="color" id="c-band" data-var="--band"></div>
+      <div class="ed-row"><label for="c-soft">Tło wstępu</label><input type="color" id="c-soft" data-var="--soft"></div>
+      <div class="ed-row"><label for="c-bg">Tło strony</label><input type="color" id="c-bg" data-var="--bg"></div>
+      <div class="ed-btns"><button class="ed-btn" type="button" id="ed-colors-reset">Przywróć kolory</button></div>
+    </div>
+    <div class="ed-group">
+      <h4>Logo</h4>
+      <input class="ed-file" type="file" id="ed-logo" accept="image/*">
+      <div class="ed-btns"><button class="ed-btn" type="button" id="ed-logo-reset">Przywróć domyślne</button></div>
+    </div>
+    <div class="ed-group">
+      <h4>Widoczne sekcje</h4>
+      <div class="ed-checks">
+        <label><input type="checkbox" id="s-uslugi" data-sec="uslugi" checked> Usługi</label>
+        <label><input type="checkbox" id="s-sprzet" data-sec="sprzet" checked> Sprzęt</label>
+        <label><input type="checkbox" id="s-wlasciciel" data-sec="wlasciciel" checked> O właścicielu</label>
+        <label><input type="checkbox" id="s-kontakt" data-sec="kontakt" checked> Kontakt</label>
+      </div>
+    </div>
+    <div class="ed-group">
+      <h4>Formularz kontaktowy</h4>
+      <label class="ed-field" for="ed-endpoint">Adres Formspree<input type="url" id="ed-endpoint" placeholder="https://formspree.io/f/xxxxxxx"></label>
+      <p class="ed-note">Załóż darmowe konto na formspree.io, utwórz formularz i wklej tu jego adres. Zapytania będą przychodzić na Twój e-mail.</p>
+    </div>
+    <div class="ed-group">
+      <h4>Dostęp administratora</h4>
+      <div class="ed-btns">
+        <button class="ed-btn" type="button" id="ed-cred">Zmień e-mail i hasło</button>
+        <button class="ed-btn" type="button" id="ed-logout">Wyloguj</button>
+      </div>
+      <p class="ed-note">Nowe dane logowania obowiązują w pobranym pliku po wgraniu go na serwer.</p>
+    </div>
+    <div class="ed-group">
+      <h4>Zapis</h4>
+      <div class="ed-btns">
+        <button class="ed-btn" type="button" id="ed-save">Zapisz szkic</button>
+        <button class="ed-btn primary" type="button" id="ed-export">Pobierz gotową stronę</button>
+        <button class="ed-btn" type="button" id="ed-discard">Odrzuć zmiany</button>
+      </div>
+      <p class="ed-status" id="ed-status" role="status"></p>
+      <p class="ed-note">Szkic zapisuje się tylko w tej przeglądarce. Aby zmiany zobaczyli odwiedzający, pobierz gotową stronę i wgraj plik index.html na serwer w miejsce starego.</p>
+    </div>
+  </div>
+  <button class="ed-fab" id="ed-fab" type="button" aria-expanded="false" aria-controls="ed-panel">✎ Edytuj stronę</button>
+</div>
+
+<script>
+(function () {
+  var KEY = 'safety-szojda-draft-v1';
+  var root = document.getElementById('owner-editor');
+  if (!root) return;
+  var TEXT_SEL = '.brand b, .brand span span, .top nav a, .label, h1, h2, h3, main p, .facts span, .gear ul, .timeline time, .timeline strong, .timeline li > span, .stats b, .stats span, .cgrid .val, dl.reg dt, dl.reg dd, footer span';
+  var $ = function (id) { return document.getElementById(id); };
+  var status = $('ed-status');
+  var defaultLogo = document.querySelector('.mark').innerHTML;
+  var css = getComputedStyle(document.documentElement);
+  var defaults = {};
+  document.querySelectorAll('[data-var]').forEach(function (inp) { defaults[inp.dataset.var] = css.getPropertyValue(inp.dataset.var).trim(); });
+  var colors = {};
+
+  function say(msg) { status.textContent = msg; clearTimeout(say.t); say.t = setTimeout(function () { status.textContent = ''; }, 4000); }
+  function toHex(v) { v = (v || '').trim(); if (/^#[0-9a-f]{6}$/i.test(v)) return v; if (/^#[0-9a-f]{3}$/i.test(v)) return '#' + v.slice(1).split('').map(function (c) { return c + c; }).join(''); return '#000000'; }
+  function applyColors() {
+    var rules = Object.keys(colors).map(function (k) { return k + ':' + colors[k]; }).join(';');
+    $('custom-colors').textContent = rules ? ':root{' + rules + '}' : '';
+    document.querySelectorAll('[data-var]').forEach(function (inp) { inp.value = toHex(colors[inp.dataset.var] || defaults[inp.dataset.var]); });
+  }
+  function applySections() {
+    document.querySelectorAll('[data-sec]').forEach(function (cb) {
+      var sec = $(cb.dataset.sec); if (sec) sec.hidden = !cb.checked;
+      var link = document.querySelector('.top nav a[href="#' + cb.dataset.sec + '"]'); if (link) link.hidden = !cb.checked;
+    });
+  }
+
+  /* Dodawanie i usuwanie kafelków usług oraz wpisów osi czasu */
+  var lists = [
+    { box: '.services', item: '.svc', label: '+ Dodaj usługę' },
+    { box: '.timeline', item: 'li', label: '+ Dodaj wpis' }
+  ];
+  function decorate() {
+    lists.forEach(function (l) {
+      var box = document.querySelector(l.box); if (!box) return;
+      if (!box.nextElementSibling || !box.nextElementSibling.classList.contains('ed-add')) {
+        var add = document.createElement('button');
+        add.type = 'button'; add.className = 'ed-add ed-only'; add.textContent = l.label;
+        add.addEventListener('click', function () {
+          var last = box.querySelector(l.item + ':last-of-type');
+          if (!last) return;
+          var copy = last.cloneNode(true); copy.classList.remove('now');
+          box.appendChild(copy); decorate(); setEditable(true);
+          var first = copy.querySelector('h3, strong'); if (first) first.focus();
+        });
+        box.after(add);
+      }
+      box.querySelectorAll(l.item).forEach(function (it) {
+        if (it.querySelector(':scope > .ed-del')) return;
+        var del = document.createElement('button');
+        del.type = 'button'; del.className = 'ed-del ed-only'; del.textContent = '×'; del.setAttribute('aria-label', 'Usuń');
+        del.addEventListener('click', function () {
+          if (box.querySelectorAll(l.item).length > 1) { it.remove(); say('Usunięto element'); } else { say('Zostaw przynajmniej jeden element'); }
+        });
+        it.prepend(del);
+      });
+    });
+  }
+  function setEditable(on) {
+    document.body.classList.toggle('editing', on);
+    document.querySelectorAll(TEXT_SEL).forEach(function (el) {
+      if (el.closest('#owner-editor') || el.classList.contains('qmsg') || el.closest('.qconsent')) return;
+      if (on) el.setAttribute('contenteditable', 'true'); else el.removeAttribute('contenteditable');
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (document.body.classList.contains('editing')) {
+      var a = e.target.closest('a'); if (a && !a.hasAttribute('download') && !a.closest('#owner-editor')) e.preventDefault();
+    }
+  }, true);
+
+  function snapshot() {
+    return {
+      header: document.querySelector('header.top').innerHTML,
+      main: document.querySelector('main').innerHTML,
+      footer: document.querySelector('footer').innerHTML,
+      colors: colors
+    };
+  }
+  function restore(d) {
+    if (d.header) document.querySelector('header.top').innerHTML = d.header;
+    if (d.main) document.querySelector('main').innerHTML = d.main;
+    if (d.footer) document.querySelector('footer').innerHTML = d.footer;
+    colors = d.colors || {};
+    document.querySelectorAll('.ed-del').forEach(function (b) { b.remove(); });
+    document.querySelectorAll('.ed-add').forEach(function (b) { b.remove(); });
+    document.querySelectorAll('[data-sec]').forEach(function (cb) { var s = $(cb.dataset.sec); cb.checked = !(s && s.hidden); });
+  }
+  function clean(html) {
+    var t = document.createElement('div'); t.innerHTML = html;
+    t.querySelectorAll('.ed-only').forEach(function (n) { n.remove(); });
+    t.querySelectorAll('[contenteditable]').forEach(function (n) { n.removeAttribute('contenteditable'); });
+    return t.innerHTML;
+  }
+
+  var opened = false;
+  function open() {
+    root.hidden = false;
+    if (opened) return; opened = true;
+    var saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    if (saved) { restore(saved); say('Wczytano zapisany szkic'); }
+    applyColors(); decorate();
+  }
+
+  $('ed-fab').addEventListener('click', function () {
+    var p = $('ed-panel'); p.hidden = !p.hidden;
+    this.setAttribute('aria-expanded', String(!p.hidden));
+  });
+  $('ed-close').addEventListener('click', function () { $('ed-panel').hidden = true; $('ed-fab').setAttribute('aria-expanded', 'false'); });
+  $('ed-mode').addEventListener('change', function () { decorate(); setEditable(this.checked); say(this.checked ? 'Kliknij tekst na stronie, aby go zmienić' : 'Edycja tekstów wyłączona'); });
+  document.querySelectorAll('[data-var]').forEach(function (inp) {
+    inp.addEventListener('input', function () { colors[inp.dataset.var] = inp.value; applyColors(); });
+  });
+  $('ed-colors-reset').addEventListener('click', function () { colors = {}; applyColors(); say('Przywrócono kolory'); });
+  $('ed-logo').addEventListener('change', function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    if (f.size > 1500000) { say('Logo jest za duże. Wybierz plik mniejszy niż 1,5 MB.'); return; }
+    var r = new FileReader();
+    r.onload = function () { document.querySelector('.mark').innerHTML = '<img alt="" src="' + r.result + '">'; say('Wstawiono nowe logo'); };
+    r.readAsDataURL(f);
+  });
+  $('ed-logo-reset').addEventListener('click', function () { document.querySelector('.mark').innerHTML = defaultLogo; say('Przywrócono domyślne logo'); });
+  document.querySelectorAll('[data-sec]').forEach(function (cb) { cb.addEventListener('change', applySections); });
+
+  $('ed-save').addEventListener('click', function () {
+    var d = snapshot(); d.header = clean(d.header); d.main = clean(d.main); d.footer = clean(d.footer);
+    try { localStorage.setItem(KEY, JSON.stringify(d)); say('Szkic zapisany w tej przeglądarce'); }
+    catch (e) { say('Nie udało się zapisać szkicu. Logo może być za duże.'); }
+  });
+  $('ed-discard').addEventListener('click', function () {
+    var b = this;
+    if (b.dataset.confirm !== '1') { b.dataset.confirm = '1'; b.textContent = 'Na pewno? Kliknij ponownie'; setTimeout(function () { b.dataset.confirm = ''; b.textContent = 'Odrzuć zmiany'; }, 4000); return; }
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  });
+  $('ed-export').addEventListener('click', function () {
+    var doc = document.documentElement.cloneNode(true);
+    doc.querySelectorAll('.ed-only').forEach(function (n) { n.remove(); });
+    doc.querySelectorAll('[contenteditable]').forEach(function (n) { n.removeAttribute('contenteditable'); });
+    doc.querySelector('body').classList.remove('editing');
+    if (!doc.querySelector('body').className) doc.querySelector('body').removeAttribute('class');
+    var ed = doc.querySelector('#owner-editor'); ed.hidden = true;
+    doc.querySelector('#ed-panel').hidden = true; doc.querySelector('#ed-auth').hidden = true; doc.querySelector('#ed-fab').hidden = false; doc.querySelector('#auth-email').removeAttribute('value');
+    doc.querySelector('#ed-status').textContent = '';
+    doc.querySelector('#ed-mode').removeAttribute('checked');
+    var html = '<!doctype html>\n' + doc.outerHTML;
+    try {
+      var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'index.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+      say('Pobrano index.html. Wgraj go na serwer.');
+    } catch (e) { say('Pobieranie zablokowane w tym oknie. Otwórz stronę bezpośrednio w przeglądarce.'); }
+  });
+
+  /* Logowanie: e-mail i hasło są zapisane w pliku tylko jako skrót PBKDF2 (meta admin-key) */
+  var SESSION = 'safety-szojda-admin';
+  var authMode = 'login';
+  function keyMeta() { return document.querySelector('meta[name="admin-key"]'); }
+  function hex(buf) { return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ('0' + b.toString(16)).slice(-2); }).join(''); }
+  function derive(email, pass, saltHex) {
+    var enc = new TextEncoder();
+    var salt = new Uint8Array(saltHex.match(/../g).map(function (h) { return parseInt(h, 16); }));
+    return crypto.subtle.importKey('raw', enc.encode(email.trim().toLowerCase() + '\n' + pass), 'PBKDF2', false, ['deriveBits'])
+      .then(function (k) { return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: salt, iterations: 150000 }, k, 256); })
+      .then(hex);
+  }
+  function authed() { try { return sessionStorage.getItem(SESSION) === (keyMeta().content || 'x'); } catch (e) { return false; } }
+  function setAuthed() { try { sessionStorage.setItem(SESSION, keyMeta().content); } catch (e) {} }
+  function showAuth(mode) {
+    authMode = mode;
+    root.hidden = false;
+    $('ed-panel').hidden = true; $('ed-fab').hidden = true; $('ed-auth').hidden = false;
+    var setup = mode !== 'login';
+    $('auth-title').textContent = setup ? (mode === 'first' ? 'Utwórz konto administratora' : 'Zmień e-mail i hasło') : 'Logowanie';
+    $('auth-intro').textContent = mode === 'first' ? 'Strona nie ma jeszcze administratora. Ustaw e-mail i hasło (min. 8 znaków).' : setup ? 'Podaj nowy e-mail i nowe hasło (min. 8 znaków).' : 'Podaj e-mail i hasło administratora strony.';
+    $('auth-pass2-wrap').hidden = !setup;
+    $('auth-pass').setAttribute('autocomplete', setup ? 'new-password' : 'current-password');
+    $('auth-submit').textContent = setup ? 'Zapisz dane logowania' : 'Zaloguj';
+    $('auth-close').hidden = mode !== 'change';
+    $('auth-err').textContent = ''; $('auth-pass').value = ''; $('auth-pass2').value = '';
+    $('auth-email').focus();
+  }
+  function enter() { $('ed-auth').hidden = true; $('ed-fab').hidden = false; open(); }
+  var fails = 0, lockUntil = 0;
+  $('auth-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = $('auth-email').value, pass = $('auth-pass').value, err = $('auth-err');
+    if (!window.crypto || !crypto.subtle) { err.textContent = 'Ta przeglądarka nie obsługuje logowania. Otwórz stronę przez https.'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) { err.textContent = 'Wpisz poprawny adres e-mail.'; return; }
+    if (authMode !== 'login') {
+      if (pass.length < 8) { err.textContent = 'Hasło musi mieć co najmniej 8 znaków.'; return; }
+      if (pass !== $('auth-pass2').value) { err.textContent = 'Hasła nie są takie same.'; return; }
+      var salt = hex(crypto.getRandomValues(new Uint8Array(16)));
+      derive(email, pass, salt).then(function (h) {
+        keyMeta().content = salt + ':' + h; setAuthed();
+        var was = authMode; enter();
+        say(was === 'first' ? 'Utworzono konto. Pobierz gotową stronę, aby je zachować.' : 'Zmieniono dane logowania. Pobierz gotową stronę, aby je zachować.');
+      });
+      return;
+    }
+    if (Date.now() < lockUntil) { err.textContent = 'Zbyt wiele prób. Spróbuj ponownie za chwilę.'; return; }
+    var parts = (keyMeta().content || '').split(':');
+    derive(email, pass, parts[0]).then(function (h) {
+      if (h === parts[1]) { fails = 0; setAuthed(); enter(); }
+      else { fails++; if (fails >= 5) { lockUntil = Date.now() + 60000; fails = 0; } err.textContent = 'Nieprawidłowy e-mail lub hasło.'; }
+    });
+  });
+  $('auth-close').addEventListener('click', function () { $('ed-auth').hidden = true; $('ed-fab').hidden = false; });
+  $('ed-cred').addEventListener('click', function () { showAuth('change'); });
+  $('ed-logout').addEventListener('click', function () {
+    try { sessionStorage.removeItem(SESSION); } catch (e) {}
+    $('ed-mode').checked = false; setEditable(false);
+    $('ed-panel').hidden = true; $('ed-fab').hidden = true;
+    showAuth('login');
+  });
+
+  function check() {
+    if (location.hash !== '#edycja' || !$('ed-auth').hidden || !$('ed-fab').hidden && !root.hidden) return;
+    if (!keyMeta().content) showAuth('first');
+    else if (authed()) { root.hidden = false; enter(); }
+    else showAuth('login');
+  }
+  window.addEventListener('hashchange', check);
+  check();
+})();
+</script>
+
+<script>
+(function () {
+  var form = document.getElementById('qform'); if (!form) return;
+  var msg = document.getElementById('q-msg-status'), btn = document.getElementById('q-send');
+  var meta = document.querySelector('meta[name="form-endpoint"]');
+  var ep = document.getElementById('ed-endpoint');
+  if (ep) {
+    ep.value = meta.content;
+    ep.addEventListener('input', function () { meta.content = ep.value.trim(); ep.setAttribute('value', ep.value.trim()); });
+  }
+  function show(text, kind) { msg.textContent = text; msg.className = 'qmsg ' + (kind || ''); }
+  form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.body.classList.contains('editing')) { show('Wyłącz tryb edycji, aby wysłać formularz.', 'err'); return; }
+    var name = form.elements.name, email = form.elements.email, text = form.elements.message, consent = form.elements.consent;
+    var bad = null;
+    if (!name.value.trim()) bad = [name, 'Wpisz imię i nazwisko lub nazwę firmy.'];
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) bad = [email, 'Wpisz poprawny adres e-mail, abyśmy mogli odpowiedzieć.'];
+    else if (text.value.trim().length < 10) bad = [text, 'Napisz kilka słów o swoim zapytaniu (min. 10 znaków).'];
+    else if (!consent.checked) bad = [consent, 'Zaznacz zgodę na przetwarzanie danych.'];
+    if (bad) { bad[0].setAttribute('aria-invalid', 'true'); bad[0].focus(); show(bad[1], 'err'); return; }
+    if (form.elements._gotcha.value) { show('Dziękujemy! Wiadomość została wysłana.', 'ok'); form.reset(); return; }
+    var url = (meta.content || '').trim();
+    if (!/^https:\/\//.test(url)) { show('Formularz nie jest jeszcze aktywny. Zadzwoń: +48 667 760 706.', 'err'); return; }
+    btn.disabled = true; btn.textContent = 'Wysyłanie…'; show('');
+    var data = new FormData(form);
+    data.append('_subject', 'Zapytanie ze strony: ' + form.elements.topic.value);
+    fetch(url, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); show('Dziękujemy! Wiadomość została wysłana. Odpowiemy wkrótce.', 'ok'); form.reset(); })
+      .catch(function () { show('Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń: +48 667 760 706.', 'err'); })
+      .then(function () { btn.disabled = false; btn.textContent = 'Wyślij zapytanie'; });
+  });
+})();
+</script>
+</body>
+</html>
