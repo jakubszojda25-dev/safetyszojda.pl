@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SAFETY – Piotr Szojda</title>
 <meta name="admin-key" content="">
-<meta name="form-endpoint" content="">
+<meta name="form-endpoint" content="https://formsubmit.co/ajax/safety.piotrszojda@gmail.com">
 <meta name="description" content="SAFETY – Piotr Szojda, Mikołów. Doradztwo BHP i ochrony przeciwpożarowej, szkolenia, świadectwa charakterystyki energetycznej, sprzęt ochronny i ratowniczy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -361,13 +361,17 @@ body.editing .ed-only { display: inline-flex; }
       <div class="head">
         <p class="label">Kontakt</p>
         <h2>Skontaktuj się z nami</h2>
-        <p>Zadzwoń, napisz przez formularz lub skontaktuj się przez profil firmy na Facebooku. Odpowiadamy najszybciej, jak to możliwe.</p>
+        <p>Zadzwoń, napisz e-mail lub wyślij zapytanie przez formularz albo skontaktuj się przez profil firmy na Facebooku. Odpowiadamy najszybciej, jak to możliwe.</p>
       </div>
       <div class="contact-layout">
       <div class="cgrid">
         <div>
           <span class="label">Telefon</span>
           <a class="val" href="tel:+48667760706">+48 667 760 706</a>
+        </div>
+        <div>
+          <span class="label">E-mail</span>
+          <a class="val" href="mailto:safety.piotrszojda@gmail.com">safety.piotrszojda@gmail.com</a>
         </div>
         <div>
           <span class="label">Adres</span>
@@ -405,7 +409,7 @@ body.editing .ed-only { display: inline-flex; }
           </select>
         </label>
         <label for="q-msg">Wiadomość<textarea id="q-msg" name="message" rows="5" required placeholder="Opisz krótko, czego potrzebujesz: rodzaj obiektu, liczba pracowników, termin."></textarea></label>
-        <input type="text" name="_gotcha" id="q-hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <input type="text" name="_honey" id="q-hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
         <label class="qconsent" for="q-consent"><input type="checkbox" id="q-consent" name="consent" required> <span>Wyrażam zgodę na przetwarzanie moich danych przez SAFETY – Piotr Szojda w celu odpowiedzi na zapytanie.</span></label>
         <p class="qmsg" id="q-msg-status" role="status"></p>
         <button class="qsend" type="submit" id="q-send">Wyślij zapytanie</button>
@@ -465,8 +469,8 @@ body.editing .ed-only { display: inline-flex; }
     </div>
     <div class="ed-group">
       <h4>Formularz kontaktowy</h4>
-      <label class="ed-field" for="ed-endpoint">Adres Formspree<input type="url" id="ed-endpoint" placeholder="https://formspree.io/f/xxxxxxx"></label>
-      <p class="ed-note">Załóż darmowe konto na formspree.io, utwórz formularz i wklej tu jego adres. Zapytania będą przychodzić na Twój e-mail.</p>
+      <label class="ed-field" for="ed-endpoint">Adres wysyłki formularza<input type="url" id="ed-endpoint" placeholder="https://formsubmit.co/ajax/twoj@email.pl"></label>
+      <p class="ed-note">Zapytania trafiają na safety.piotrszojda@gmail.com. Aby zmienić skrzynkę, wpisz https://formsubmit.co/ajax/ i nowy adres e-mail.</p>
     </div>
     <div class="ed-group">
       <h4>Dostęp administratora</h4>
@@ -743,14 +747,19 @@ body.editing .ed-only { display: inline-flex; }
     else if (text.value.trim().length < 10) bad = [text, 'Napisz kilka słów o swoim zapytaniu (min. 10 znaków).'];
     else if (!consent.checked) bad = [consent, 'Zaznacz zgodę na przetwarzanie danych.'];
     if (bad) { bad[0].setAttribute('aria-invalid', 'true'); bad[0].focus(); show(bad[1], 'err'); return; }
-    if (form.elements._gotcha.value) { show('Dziękujemy! Wiadomość została wysłana.', 'ok'); form.reset(); return; }
+    if (form.elements._honey.value) { show('Dziękujemy! Wiadomość została wysłana.', 'ok'); form.reset(); return; }
     var url = (meta.content || '').trim();
     if (!/^https:\/\//.test(url)) { show('Formularz nie jest jeszcze aktywny. Zadzwoń: +48 667 760 706.', 'err'); return; }
     btn.disabled = true; btn.textContent = 'Wysyłanie…'; show('');
     var data = new FormData(form);
     data.append('_subject', 'Zapytanie ze strony: ' + form.elements.topic.value);
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
     fetch(url, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); show('Dziękujemy! Wiadomość została wysłana. Odpowiemy wkrótce.', 'ok'); form.reset(); })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok || j.success === false || j.success === 'false') throw new Error(j.message || r.status);
+        show('Dziękujemy! Wiadomość została wysłana. Odpowiemy wkrótce.', 'ok'); form.reset();
+      }); })
       .catch(function () { show('Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń: +48 667 760 706.', 'err'); })
       .then(function () { btn.disabled = false; btn.textContent = 'Wyślij zapytanie'; });
   });
@@ -758,3 +767,4 @@ body.editing .ed-only { display: inline-flex; }
 </script>
 </body>
 </html>
+
